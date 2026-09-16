@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build artifacts (this plugin is plain ESM — nothing to build)
+dist/
+
+# Local data — never commit the snapshot database
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+examples/.demo-home/
+
+# Logs & OS noise
+*.log
+.DS_Store
+._*
+
+# Local env / secrets — never commit credentials
+.env
+.env.*
+*.local
+
+# Demo state written by examples/worldsense-demo.mjs
+examples/demo-state.json
+
+# Editor / agent scratch dirs
+.qwen/
+.reasonix/
+.zcode/
+.codebuddy/
+.workbuddy/
+.kilo/
+.idea/
+.vscode/
+_logs/
+_plans/
+_prompts/
+audit/

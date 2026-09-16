@@ -1,0 +1,92 @@
+{
+  "sources": [
+    {
+      "id": "prod-platform",
+      "name": "Production Platform",
+      "description": "Internal deployment/status API for the payment platform",
+      "type": "http-json",
+      "baseUrl": "https://platform.internal.example.com",
+      "auth": { "type": "api-key-header", "header": "X-API-Key", "credential": "PLATFORM_API_KEY" },
+      "timeoutMs": 5000,
+      "maxResponseBytes": 262144,
+      "endpoints": {
+        "deployment-status": {
+          "description": "Current deployment state of payment-api",
+          "path": "/api/v1/deployments/payment-api",
+          "query": {
+            "environment": { "type": "enum", "values": ["prod", "staging"], "required": true }
+          },
+          "fields": {
+            "service": "/service",
+            "version": "/version",
+            "desiredReplicas": "/replicas/desired",
+            "readyReplicas": "/replicas/ready"
+          }
+        },
+        "queues": {
+          "path": "/api/v1/queues",
+          "query": {
+            "queue": { "type": "string", "required": true, "maxLength": 64 },
+            "limit": { "type": "integer", "min": 1, "max": 100, "default": 20 }
+          },
+          "fields": {
+            "depth": "/depth",
+            "oldestMessageSeconds": "/oldest_age_seconds"
+          }
+        }
+      }
+    },
+    {
+      "id": "github-dsh-grafana",
+      "name": "GitHub · dsh-grafana",
+      "description": "Real-world feedback for the dsh-grafana repository",
+      "type": "http-json",
+      "baseUrl": "https://api.github.com",
+      "auth": { "type": "bearer", "credential": "GITHUB_TOKEN" },
+      "endpoints": {
+        "repository": {
+          "path": "/repos/guhanfei-ai/dsh-grafana",
+          "fields": {
+            "stars": "/stargazers_count",
+            "forks": "/forks_count",
+            "issues": "/open_issues_count",
+            "updatedAt": "/updated_at"
+          }
+        }
+      }
+    },
+    {
+      "id": "business-api",
+      "name": "Business Daily Summary",
+      "description": "Daily business numbers (orders, revenue, payments)",
+      "type": "http-json",
+      "baseUrl": "https://biz.example.com",
+      "auth": { "type": "none" },
+      "endpoints": {
+        "daily-summary": {
+          "path": "/api/daily-summary",
+          "query": {
+            "market": { "type": "enum", "values": ["cn", "eu", "us"], "default": "cn" }
+          },
+          "fields": {
+            "orders": "/orders",
+            "revenue": "/revenue",
+            "failedPayments": "/failed_payments",
+            "activeUsers": "/active_users"
+          }
+        }
+      }
+    },
+    {
+      "id": "local-dev",
+      "name": "Local development API",
+      "description": "Loopback plain-HTTP lab service (allowed without allowInsecureHttp)",
+      "type": "http-json",
+      "baseUrl": "http://127.0.0.1:8919",
+      "auth": { "type": "none" },
+      "endpoints": {
+        "status": { "path": "/api/status", "fields": { "status": "/status", "version": "/version" } }
+      }
+    }
+  ]
+}
