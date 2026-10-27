@@ -40,3 +40,8 @@ _logs/
 _plans/
 _prompts/
 audit/
+# AI 协作入口只留本地，不进 Git
+AGENTS.md
+# 发布日志与本地 AI 发布执行器
+output/
+/deploy_agent.sh

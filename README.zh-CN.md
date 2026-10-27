@@ -1,5 +1,8 @@
 # dsh-worldsense
 
+> [!NOTE]
+> 🧪 **实验阶段。** 这是 [古寒飞AI](https://github.com/guhanfei-ai) 实验室里的早期原型：想法是认真的，代码还是第一版。目前没有稳定版本，接口、数据格式和行为都可能随时调整，不建议用于生产环境。欢迎提 issue 聊想法。
+
 > **给 DSH Agent 一个安全、只读、受限的"现实感知层"。**
 >
 > WorldSense lets DeepSeek Harness safely read administrator-defined JSON APIs

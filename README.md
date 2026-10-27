@@ -1,5 +1,8 @@
 # dsh-worldsense
 
+> [!NOTE]
+> 🧪 **Experimental.** An early prototype from the [guhanfei-ai](https://github.com/guhanfei-ai) lab: the idea is serious, the code is a first cut. There is no stable release yet; APIs, data formats and behavior may change without notice, so it is not recommended for production. Ideas and issues are welcome.
+
 > **WorldSense lets DeepSeek Harness safely read administrator-defined JSON
 > APIs without turning the agent into an unrestricted HTTP client.**
 >
